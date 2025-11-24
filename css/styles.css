@@ -1,0 +1,677 @@
+    /* ===========================
+   GLOBAL BASE STYLES
+=========================== */
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: radial-gradient(circle at top left, #0f0f10, #090909 70%);
+        color: #fff;
+        scroll-behavior: smooth;
+    }
+    /* Global Links */
+    
+    a {
+        text-decoration: none;
+        color: #fff;
+        transition: 0.3s ease;
+    }
+    
+    a:hover {
+        color: #00eaff;
+    }
+    /* Global Section Style */
+    
+    section {
+        padding: 120px 10%;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: #00eaff;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: #00eaff;
+        border-radius: 10px;
+    }
+    /* ===========================
+   NAVBAR
+=========================== */
+    
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        padding: 18px 0;
+        z-index: 1000;
+    }
+    
+    .navbar {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #00eaff;
+    }
+    
+    .logo span {
+        color: #fff;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+    }
+    
+    .nav-links a {
+        font-weight: 500;
+        position: relative;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #00eaff;
+    }
+    
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #00eaff;
+        bottom: -5px;
+        left: 0;
+        transition: 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    /* ===========================
+   MENU ICON
+=========================== */
+    
+    .menu-icon {
+        display: none;
+        font-size: 1.5rem;
+        color: #00eaff;
+        cursor: pointer;
+    }
+    /* ===========================
+   MOBILE STYLES - MODERN LEFT SIDEBAR
+=========================== */
+    
+    @media (max-width: 768px) {
+        /* Sidebar container */
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            /* hidden initially on the left */
+            height: 100%;
+            width: 280px;
+            background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
+            backdrop-filter: blur(10px);
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 100px 30px 30px 30px;
+            /* top padding for space below header */
+            gap: 25px;
+            transition: left 0.4s ease;
+            z-index: 999;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0 20px 20px 0;
+        }
+        .nav-links.active {
+            left: 0;
+            /* slide in when active */
+        }
+        /* Sidebar links */
+        .nav-links a {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #fff;
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00eaff;
+            background: rgba(0, 234, 255, 0.1);
+            transform: translateX(5px);
+        }
+        /* Hamburger / X menu icon on the left */
+        .menu-icon {
+            display: block;
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            font-size: 1.6rem;
+            color: #00eaff;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        /* Move logo slightly right so it doesn't overlap menu */
+        .navbar {
+            justify-content: flex-start;
+            padding-left: 70px;
+        }
+        /* Hide hover underline for mobile */
+        .nav-links a::after {
+            display: none;
+        }
+        /* Overlay when sidebar is open */
+        body.sidebar-open::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 998;
+            backdrop-filter: blur(2px);
+        }
+    }
+    /* ===========================
+   HOME SECTION
+=========================== */
+    
+    .home {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .home-content h1 {
+        font-size: 3rem;
+    }
+    
+    #typed-name {
+        color: #00eaff;
+        font-weight: 700;
+        text-shadow: 0 0 8px rgba(0, 234, 255, 0.7), 0 0 15px rgba(0, 234, 255, 0.5), 0 0 25px rgba(0, 234, 255, 0.3);
+        letter-spacing: 1px;
+    }
+    
+    #typed-name::after {
+        content: "|";
+        animation: blink 0.7s infinite;
+        color: #00eaff;
+        margin-left: 3px;
+    }
+    
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    
+    .home-content h3 {
+        margin-top: 10px;
+        font-weight: 400;
+        color: #ccc;
+    }
+    
+    .home-content p {
+        color: #aaa;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        background: #00eaff;
+        color: #111;
+        transition: 0.3s;
+    }
+    
+    .btn:hover {
+        transform: scale(1.05);
+        background: #00c4d6;
+    }
+    /* ===========================
+   ABOUT SECTION
+=========================== */
+    
+    #about {
+        background: radial-gradient(circle at top left, #0f0f10, #090909 70%);
+    }
+    
+    .about-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    
+    .about-image img {
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #00eaff;
+        box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
+        transition: transform 0.4s ease;
+    }
+    
+    .about-image img:hover {
+        transform: scale(1.05);
+    }
+    
+    .about-text {
+        max-width: 500px;
+    }
+    
+    .about-text p {
+        color: #ccc;
+        line-height: 1.7;
+        font-size: 1.05rem;
+        margin-bottom: 15px;
+    }
+    /* ===========================
+   TECH STACK
+=========================== */
+    
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+        justify-items: center;
+        align-items: center;
+        margin-top: 50px;
+        max-width: 1000px;
+        margin-inline: auto;
+    }
+    
+    .skill-card {
+        width: 160px;
+        height: 120px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-card i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-6px);
+        background: rgba(0, 234, 255, 0.08);
+        box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+        border-color: #00eaff;
+    }
+    /* ===========================
+   EDUCATION SECTION
+=========================== */
+    
+    #education {
+        padding: 100px 0;
+        background: radial-gradient(circle at top left, #0f0f10, #090909 70%);
+        color: #fff;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #00eaff;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: #00eaff;
+        margin: 10px auto 0;
+        border-radius: 3px;
+    }
+    
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .timeline-item {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        background: #141414;
+        border-radius: 15px;
+        padding: 20px 30px;
+        border-left: 4px solid #00eaff;
+        box-shadow: 0 0 10px rgba(0, 234, 255, 0.05);
+        transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+        transform: translateY(-5px);
+        border-color: #00eaff;
+        box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .school-logo {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #fff;
+        padding: 5px;
+        filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.6));
+    }
+    
+    .timeline-content {
+        text-align: left;
+        flex: 1;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #00eaff;
+        margin-bottom: 5px;
+    }
+    
+    .timeline-content p {
+        font-size: 1rem;
+        color: #ccc;
+    }
+    
+    @media (max-width: 700px) {
+        .timeline-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        .school-logo {
+            margin-bottom: 10px;
+        }
+        .timeline-content {
+            text-align: center;
+        }
+    }
+    /* ===========================
+   EXPERIENCE SECTION
+=========================== */
+    
+    #experience {
+        background: radial-gradient(circle at bottom right, #0f0f10, #090909 70%);
+    }
+    
+    .experience-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .experience-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #00eaff;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: left;
+        transition: all 0.3s ease;
+    }
+    
+    .experience-item:hover {
+        transform: translateY(-5px);
+        background: rgba(0, 234, 255, 0.08);
+        box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+    }
+    
+    .experience-item h3 {
+        margin-bottom: 6px;
+        color: #00eaff;
+        font-size: 1.2rem;
+    }
+    
+    .experience-item p {
+        color: #ccc;
+        font-size: 1rem;
+    }
+    /* ===========================
+   CERTIFICATIONS
+=========================== */
+    
+    #certifications {
+        background: radial-gradient(circle at bottom right, #0f0f10, #090909 70%);
+    }
+    
+    .certifications-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .cert-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 4px solid #00eaff;
+        border-radius: 12px;
+        padding: 25px;
+        width: 320px;
+        text-align: left;
+        transition: 0.3s ease;
+    }
+    
+    .cert-item:hover {
+        transform: translateY(-5px);
+        background: rgba(0, 234, 255, 0.08);
+        box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+    }
+    
+    .cert-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #00eaff;
+    }
+    
+    .cert-item p {
+        font-size: 1rem;
+        color: #ccc;
+    }
+    /* Make certification links blue and animated */
+    
+    .cert-item h3 a {
+        color: #00eaff;
+        text-decoration: none;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .cert-item h3 a:hover {
+        color: #00c4d6;
+        text-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
+    }
+    
+    .cert-item strong {
+        color: #00eaff;
+        font-weight: 600;
+    }
+    /* ===========================
+   CONTACT SECTION
+=========================== */
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+        margin-top: 40px;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 1.1rem;
+        color: #ddd;
+        transition: 0.3s;
+    }
+    
+    .contact-item i {
+        color: #00eaff;
+        font-size: 1.5rem;
+        transition: 0.3s;
+    }
+    
+    .contact-item:hover i {
+        transform: scale(1.2);
+        color: #00c4d6;
+    }
+    /* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+    
+    @media (max-width: 768px) {
+        .about-container,
+        .timeline-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        .school-logo {
+            margin-bottom: 10px;
+        }
+        .about-image img {
+            width: 180px;
+            height: 180px;
+        }
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        justify-items: center;
+        align-items: center;
+    }
+    /* ===========================
+   SCROLL FADE ANIMATION
+=========================== */
+    
+    .animate {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    footer {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        margin-top: 60px;
+        /* adds space before footer */
+    }
+    /* Portfolio Cards (Same style as your other sections) */
+    
+    .portfolio-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .portfolio-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #00eaff;
+        border-radius: 15px;
+        padding: 25px;
+        transition: 0.3s ease;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 12px rgba(0, 234, 255, 0.1);
+    }
+    
+    .portfolio-card:hover {
+        transform: translateY(-6px);
+        background: rgba(0, 234, 255, 0.08);
+        box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+    }
+    
+    .portfolio-card h3 {
+        color: #00eaff;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .portfolio-card .tech {
+        color: #aaa;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .portfolio-card ul {
+        margin-left: 18px;
+    }
+    
+    .portfolio-card ul li {
+        margin-bottom: 6px;
+        color: #ddd;
+        line-height: 1.5;
+    }

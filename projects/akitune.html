@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akitune — Adaptive Audio Retuning System</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #0f0f10, #090909 70%);
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s ease;
+        }
+        
+        a:hover {
+            color: #00eaff;
+        }
+        
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #00eaff;
+            margin-bottom: 20px;
+            /* reduced from 50px */
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #00eaff;
+            border-radius: 10px;
+        }
+        
+        .tech {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 20px;
+            /* reduced spacing */
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            background: #00eaff;
+            color: #111;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background: #00c4d6;
+        }
+        
+        .portfolio-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            /* slightly smaller gap */
+            margin-top: 30px;
+            /* reduced from 40px */
+            padding: 0 10%;
+        }
+        
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #00eaff;
+            border-radius: 15px;
+            padding: 20px;
+            /* slightly less padding */
+            transition: 0.3s ease;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 12px rgba(0, 234, 255, 0.1);
+            cursor: default;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            background: rgba(0, 234, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+        }
+        
+        .portfolio-card h3 {
+            color: #00eaff;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            /* tighter spacing */
+        }
+        
+        .portfolio-card ul {
+            margin-left: 18px;
+            margin-top: 10px;
+            /* small top margin */
+            padding-left: 0;
+        }
+        
+        .portfolio-card ul li {
+            margin-bottom: 10px;
+            /* controlled spacing */
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .portfolio-card strong {
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+        
+        .portfolio-card em {
+            font-style: italic;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section style="padding:120px 10%; text-align:center;">
+        <h1 class="section-title">Akitune — Adaptive Audio Retuning System</h1>
+        <p class="tech">Python • Deep Learning • Audio Processing</p>
+    </section>
+    <!-- Features & Functions Section -->
+    <section class="portfolio-cards">
+        <div class="portfolio-card">
+            <h3>Features & Functions</h3>
+            <ul>
+                <li>
+                    <strong>Overstimulating Audio Detection:</strong> Akitune scans audio content from videos and media to identify sections with excessively high volume or harsh frequencies. This helps protect children and sensitive listeners from potential
+                    auditory overstimulation.
+                </li>
+                <li>
+                    <strong>Advanced Audio Feature Extraction:</strong> The system uses <em>STFT</em> and <em>MFCC</em> to analyze audio signals in detail. These techniques allow accurate identification of pitch, volume, and frequency patterns for precise
+                    detection.
+                </li>
+                <li>
+                    <strong>Deep Learning Classification:</strong> A <em>VGG16 CNN</em> model classifies audio segments based on intensity and overstimulation risk. It is trained on diverse media to reliably detect loud or harsh content.
+                </li>
+                <li>
+                    <strong>Automatic Audio Retuning:</strong> Detected overstimulating audio is adjusted automatically. Peaks are softened, and harsh frequencies are balanced to create a safer listening experience while preserving clarity.
+                </li>
+                <li>
+                    <strong>Personalized User Profiles:</strong> Users can set age-specific hearing sensitivity levels. The system applies retuning rules based on these profiles and maintains logs of detected audio events.
+                </li>
+                <li>
+                    <strong>Real-Time Feedback and Logging:</strong> Akitune generates logs showing overstimulating segments and applied adjustments. Parents, educators, and users can review these logs to monitor audio safety.
+                </li>
+                <li>
+                    <strong>Compatibility Across Media Types:</strong> The system supports various audio formats, including streamed and local files. This ensures flexible use across different platforms and media types.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

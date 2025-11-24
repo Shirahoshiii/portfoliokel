@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exequiel Bangal — Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="main-content"></div>
+
+    <script>
+        async function loadSections() {
+            const sections = [
+                "header",
+                "home",
+                "about",
+                "skills",
+                "experience",
+                "education",
+                "certifications",
+                "portfolio",
+                "contact",
+                "footer"
+            ];
+
+            const container = document.getElementById("main-content");
+
+            for (const section of sections) {
+                const response = await fetch(`sections/${section}.html`);
+                const html = await response.text();
+                container.insertAdjacentHTML("beforeend", html);
+            }
+
+
+            initPageFeatures();
+        }
+        loadSections();
+
+
+        function initPageFeatures() {
+
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add("visible");
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            document.querySelectorAll(".animate").forEach(el => observer.observe(el));
+
+            // ====== ACTIVE NAV LINK HIGHLIGHT ======
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-links li a");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(current)) {
+                        link.classList.add("active");
+                    }
+                });
+            });
+
+            // ====== TYPING ANIMATION FOR NAME ======
+            const typedName = "Exequiel Bangal";
+            const nameElement = document.getElementById("typed-name");
+            let i = 0;
+            let isDeleting = false;
+            let speed = 150;
+
+            function typeEffect() {
+                if (!nameElement) return;
+
+                if (!isDeleting && i < typedName.length) {
+                    nameElement.textContent = typedName.substring(0, i + 1);
+                    i++;
+                    setTimeout(typeEffect, speed);
+                } else if (isDeleting && i > 0) {
+                    nameElement.textContent = typedName.substring(0, i - 1);
+                    i--;
+                    setTimeout(typeEffect, speed / 2);
+                } else {
+                    isDeleting = !isDeleting;
+                    setTimeout(typeEffect, 1000);
+                }
+            }
+            typeEffect();
+        }
+    </script>
+
+    <!-- External JS -->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
